@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/loginPageFragment">
+
+
+
+    <fragment
+        android:id="@+id/loginPageFragment"
+        android:name="com.example.splitshare.login.loginpage.LoginPageFragment"
+        android:label="LoginPageFragment"
+        android:layout = "@layout/login_page_fragment">
+        <action
+            android:id="@+id/action_loginPageFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginPageFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment"
+            app:popUpTo="@id/loginPageFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.splitshare.login.signup.SignupFragment"
+        android:label="signup_fragment"
+        tools:layout="@layout/signup_fragment" >
+        <action
+            android:id="@+id/action_signupFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_signupFragment_to_loginPageFragment"
+            app:destination="@id/loginPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.splitshare.homepage.HomePageFragment"
+        android:label="home_page_fragment"
+        tools:layout="@layout/home_page_fragment" >
+        <action
+            android:id="@+id/action_homePageFragment_to_groupFragment"
+            app:destination="@id/groupFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_loginPageFragment"
+            app:destination="@id/loginPageFragment"
+            app:popUpTo="@id/homePageFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupFragment"
+        android:name="com.example.splitshare.groups.allgroups.showgroup.GroupFragment"
+        android:label="group_fragment"
+        tools:layout="@layout/group_fragment" >
+        <action
+            android:id="@+id/action_groupFragment_to_activitiesPageFragment"
+            app:destination="@id/activitiesPageFragment" />
+        <action
+            android:id="@+id/action_groupFragment_to_addNewGroupFragment"
+            app:destination="@id/addNewGroupFragment" />
+        <action
+            android:id="@+id/action_groupFragment_to_groupInfoFragment"
+            app:destination="@id/groupInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/activitiesPageFragment"
+        android:name="com.example.splitshare.activity.ActivitiesPageFragment"
+        android:label="activities_page_fragment"
+        tools:layout="@layout/activities_page_fragment" >
+        <action
+            android:id="@+id/action_activitiesPageFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilePageFragment"
+        android:name="com.example.splitshare.profile.ProfilePageFragment"
+        android:label="profile_page_fragment"
+        tools:layout="@layout/profile_page_fragment" >
+        <action
+            android:id="@+id/action_profilePageFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profilePageFragment_to_loginPageFragment"
+            app:destination="@id/loginPageFragment"
+            app:popUpTo="@id/homePageFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewGroupFragment"
+        android:name="com.example.splitshare.groups.allgroups.addgroup.AddNewGroupFragment"
+        android:label="add_new_group_fragment"
+        tools:layout="@layout/add_new_group_fragment" >
+        <action
+            android:id="@+id/action_addNewGroupFragment_to_groupFragment"
+            app:destination="@id/groupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupInfoFragment"
+        android:name="com.example.splitshare.groups.allgroups.groupinfo.GroupInfoFragment"
+        android:label="group_info_fragment"
+        tools:layout="@layout/group_info_fragment" >
+        <action
+            android:id="@+id/action_groupInfoFragment_to_addNewMemberFragment"
+            app:destination="@id/addNewMemberFragment" />
+        <action
+            android:id="@+id/action_groupInfoFragment_to_addNewBillFragment"
+            app:destination="@id/addNewBillFragment" />
+        <action
+            android:id="@+id/action_groupInfoFragment_to_showBillsFragment"
+            app:destination="@id/showBillsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewMemberFragment"
+        android:name="com.example.splitshare.groups.allgroups.addmember.AddNewMemberFragment"
+        android:label="AddNewMemberFragment" />
+    <fragment
+        android:id="@+id/addNewBillFragment"
+        android:name="com.example.splitshare.groups.bills.addreceipt.AddNewBillFragment"
+        android:label="add_new_bill_fragment"
+        tools:layout="@layout/add_new_bill_fragment" /><action android:id="@+id/action_global_homePageFragment" app:destination="@id/homePageFragment"/><action android:id="@+id/action_global_groupFragment" app:destination="@id/groupFragment"/><action android:id="@+id/action_global_activitiesPageFragment" app:destination="@id/activitiesPageFragment"/>
+    <action
+        android:id="@+id/action_global_profilePageFragment"
+        app:destination="@id/profilePageFragment"
+        app:popUpTo="@id/profilePageFragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.splitshare.profile.EditProfileFragment"
+        android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/showBillsFragment"
+        android:name="com.example.splitshare.groups.bills.showreceipts.ShowBillsFragment"
+        android:label="show_bills_fragment"
+        tools:layout="@layout/show_bills_fragment" />
+
+
+</navigation>
