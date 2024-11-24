@@ -55,24 +55,24 @@ public class LoginPageFragment extends Fragment {
 
                     try {
                         mViewModel.validateUserDetails(userName, password);
-                        Snackbar.make(view, "Log in Successful", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "Log in Successful", Snackbar.LENGTH_SHORT).show();
                         mViewModel.setLoggedInUser(mViewModel.getUserbyEmail(userName));
                         LoggedInUser.getInstance().setUser(mViewModel.getLoggedInUser());
                         NavController navController = Navigation.findNavController(view);
                         navController.navigate(R.id.action_loginPageFragment_to_homePageFragment);
 
                     } catch (ExecutionException e) {
-                        Snackbar.make(view, "Execution Exception Occured", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "Execution Exception Occured", Snackbar.LENGTH_SHORT).show();
                     } catch (InterruptedException e) {
-                        Snackbar.make(view, "Interrupted Exception  Occured", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "Interrupted Exception  Occured", Snackbar.LENGTH_SHORT).show();
                     } catch (NullPointerException e) {
-                        Snackbar.make(view, "Username/Password is incorrect", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "Username/Password is incorrect", Snackbar.LENGTH_SHORT).show();
                     } catch (UserNotFoundException | WrongPasswordException e) {
-                        Snackbar.make(view, "Invalid Credentials", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "Invalid Credentials", Snackbar.LENGTH_SHORT).show();
                     }
 
                 } else {
-                    Snackbar.make(view, "Username and password cannot be empty", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, "Username and password cannot be empty", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });

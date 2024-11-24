@@ -77,7 +77,7 @@ public class ProfilePageFragment extends Fragment {
 
 
 
-        //implement the bottom nav
+        //bottom navbar implementation
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             NavController navController = Navigation.findNavController(view);
             if(item.getItemId() == R.id.homePageFragment){
@@ -90,7 +90,7 @@ public class ProfilePageFragment extends Fragment {
                 return true;
             }
 
-            else if(item.getItemId() == R.id.activitiesFragment){
+            else if(item.getItemId() == R.id.owesFragment){
                 navController.navigate(R.id.action_global_activitiesPageFragment);
                 return true;
             }
@@ -101,7 +101,7 @@ public class ProfilePageFragment extends Fragment {
             }
 
             else{
-                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_SHORT).show();
                 return false;
             }
 

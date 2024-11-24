@@ -12,7 +12,7 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C7DBE6"
+        android:background="#FFFFFF"
         tools:context=".groups.allgroups.showgroup.GroupFragment">
 
 
@@ -20,7 +20,7 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#D0D3A5"
+            android:background="#FFFFFF"
             app:elevation="4dp"
             app:itemIconSize="30dp"
             app:itemPaddingBottom="12dp"
@@ -90,7 +90,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/GroupsRecyclerView"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"

@@ -11,7 +11,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,8 +19,6 @@ import com.example.splitshare.databinding.HomePageFragmentBinding;
 import com.example.splitshare.login.loginpage.LoginPageViewModel;
 import com.example.splitshare.login.user.LoggedInUser;
 import com.example.splitshare.login.user.User;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class HomePageFragment extends Fragment {
@@ -72,6 +69,7 @@ public class HomePageFragment extends Fragment {
         binding.welcomeText.setText("Welcome " + loggedInUser.getFirstName());
         binding.welcomeText2.setText("Your groups: " + "");
 
+        //bottom navbar implementation
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             NavController navController = Navigation.findNavController(view);
             if(item.getItemId() == R.id.homePageFragment){
@@ -84,7 +82,7 @@ public class HomePageFragment extends Fragment {
                 return true;
             }
 
-            else if(item.getItemId() == R.id.activitiesFragment){
+            else if(item.getItemId() == R.id.owesFragment){
                 navController.navigate(R.id.action_global_activitiesPageFragment);
                 return true;
             }
@@ -95,11 +93,10 @@ public class HomePageFragment extends Fragment {
             }
 
             else{
-                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_SHORT).show();
                 return false;
             }
 
         });
-
     }
 }

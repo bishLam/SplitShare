@@ -88,34 +88,20 @@
             android:fontFamily="sans-serif-medium"
             android:text="Enter group details"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/guideline9"
             app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/groupMembersTIL"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toStartOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/groupDescriptionTIL">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Group members email"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <Button
             android:id="@+id/addGroupButton"
+            style="@android:style/Widget.Material.Button.Toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="Add"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/groupMembersTIL" />
+            app:layout_constraintEnd_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toBottomOf="@+id/groupDescriptionTIL" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

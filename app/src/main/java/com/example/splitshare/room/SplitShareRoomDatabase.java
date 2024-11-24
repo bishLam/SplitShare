@@ -126,15 +126,14 @@ public abstract class SplitShareRoomDatabase extends RoomDatabase {
 
             //splitbill
             SplitBillDetailsDAO splitBillDAO = INSTANCE.splitBillDAO();
-            SplitBillDetails splitBillDetails1 = new SplitBillDetails(100.00, 50.00, "test", 1 , user1.getUserID(), user2.getUserID(), group1.getGroupID(), new Date(), "assigned");
+            SplitBillDetails splitBillDetails1 = new SplitBillDetails(50.00, 1, user2.getUserID(), "assigned");
             splitBillDAO.insert(splitBillDetails1);
-            SplitBillDetails splitBillDetails2 = new SplitBillDetails(100.00, 50.00, "test2", 1, user1.getUserID(), user1.getUserID(), group1.getGroupID(), new Date(), "assigned");
+            SplitBillDetails splitBillDetails2 = new SplitBillDetails(50.00, 1, user1.getUserID(), "assigned");
             splitBillDAO.insert(splitBillDetails2);
-            SplitBillDetails splitBillDetails3 = new SplitBillDetails(200.00, 100.00, "test3", 2, user2.getUserID(), user1.getUserID(), group1.getGroupID(), new Date(), "assigned");
+            SplitBillDetails splitBillDetails3 = new SplitBillDetails(100.00, 2, user1.getUserID(), "assigned");
             splitBillDAO.insert(splitBillDetails3);
-            SplitBillDetails splitBillDetails4 = new SplitBillDetails(200.00, 100.00, "test4", 2, user2.getUserID(), user2.getUserID(), group1.getGroupID(), new Date(), "assigned");
+            SplitBillDetails splitBillDetails4 = new SplitBillDetails(100.00, 2, user2.getUserID(), "assigned");
             splitBillDAO.insert(splitBillDetails4);
-            splitBillDAO.getSplitBillByID(splitBillDetails1.getSplitId());
         });
     }
 }

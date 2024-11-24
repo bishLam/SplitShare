@@ -10,8 +10,11 @@ import androidx.recyclerview.widget.ListAdapter;
 import com.example.splitshare.databinding.AssignBillRecyclerViewItemBinding;
 import com.example.splitshare.login.user.User;
 
+import java.util.HashMap;
+
 public class AssignBillRecyclerViewAdapter extends ListAdapter<User, AssignBillViewHolder> {
     private AssignBillRecyclerViewItemBinding binding;
+    public final HashMap<Integer, Double> amountHash = new HashMap<>();
 
     protected AssignBillRecyclerViewAdapter() {
         super(DIFF_CALLBACK);
@@ -40,12 +43,17 @@ public class AssignBillRecyclerViewAdapter extends ListAdapter<User, AssignBillV
     public AssignBillViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         binding = AssignBillRecyclerViewItemBinding.inflate(inflater, parent, false);
-        return new AssignBillViewHolder(binding);
+        return new AssignBillViewHolder(binding, amountHash);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AssignBillViewHolder holder, int position) {
         User user = getItem(position);
         holder.update(user);
+    }
+
+    //this is so that we can store the logic in the fragment from the values and keys
+    public HashMap<Integer, Double> getAmountHash(){
+        return amountHash;
     }
 }

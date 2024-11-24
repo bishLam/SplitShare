@@ -1,33 +1,12 @@
-package com.example.splitshare.groups.bills;
+package com.example.splitshare.groups.bills.showreceipts;
 
-import static androidx.room.ForeignKey.CASCADE;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Ignore;
-import androidx.room.Index;
-import androidx.room.PrimaryKey;
-
-import com.example.splitshare.groups.allgroups.Group;
-import com.example.splitshare.login.user.User;
 
 import java.util.Date;
 
-@Entity (tableName = "RECEIPT" ,
-        indices = {
-                @Index(value = "RECEIPT_ID"),
-                @Index(value = "USER_ID"),
-                @Index(value = "GROUP_ID")
-        },
-        foreignKeys = {
-                @ForeignKey(entity = Group.class, parentColumns = "GROUP_ID", childColumns = "GROUP_ID", onDelete = CASCADE),
-                @ForeignKey(entity = User.class, parentColumns = "USER_ID", childColumns = "USER_ID", onDelete = CASCADE)
-        }
-)
-public class Receipt {
-
-    @PrimaryKey(autoGenerate = true)
+public class DisplayReceiptClass {
     @ColumnInfo(name = "RECEIPT_ID")
     private Integer receiptID;
 
@@ -46,18 +25,24 @@ public class Receipt {
     @ColumnInfo(name = "GROUP_ID")
     private Integer groupID;
 
-    // Constructors, getters, and setters
+    @ColumnInfo(name = "FIRST_NAME")
+    private String firstName;
+
+    @ColumnInfo(name = "LAST_NAME")
+    private String lastName;
 
     @Ignore
-    public Receipt() {
+    public DisplayReceiptClass() {
     }
 
-    public Receipt(String receiptDescription, Double receiptAmount, Date receiptDate, Integer userID, Integer groupID) {
+    public DisplayReceiptClass(String receiptDescription, Double receiptAmount, Date receiptDate, Integer userID, Integer groupID, String firstName, String lastName) {
         this.receiptDescription = receiptDescription;
         this.receiptAmount = receiptAmount;
         this.receiptDate = receiptDate;
         this.userID = userID;
         this.groupID = groupID;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Integer getReceiptID() {
@@ -108,15 +93,22 @@ public class Receipt {
         this.groupID = groupID;
     }
 
-    @Override
-    public String toString() {
-        return "Receipt{" +
-                "receiptID=" + receiptID +
-                ", receiptDescription='" + receiptDescription + '\'' +
-                ", receiptAmount=" + receiptAmount +
-                ", receiptDate='" + receiptDate + '\'' +
-                ", userID=" + userID +
-                ", groupID=" + groupID +
-                '}';
+    public String getFirstName() {
+        return firstName;
     }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+
 }
+

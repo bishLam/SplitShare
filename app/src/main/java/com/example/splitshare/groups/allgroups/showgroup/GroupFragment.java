@@ -48,7 +48,7 @@ public class GroupFragment extends Fragment implements OnGroupClickListener{
         super.onViewCreated(view, savedInstanceState);
 
         binding.GroupsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.GroupsRecyclerView.setHasFixedSize(true);
+        binding.GroupsRecyclerView.setHasFixedSize(false);
 
         //create the adapter
         GroupsRecyclerViewAdapter adapter = new GroupsRecyclerViewAdapter(this);
@@ -89,7 +89,7 @@ public class GroupFragment extends Fragment implements OnGroupClickListener{
                 return true;
             }
 
-            else if(item.getItemId() == R.id.activitiesFragment){
+            else if(item.getItemId() == R.id.owesFragment){
                 navController.navigate(R.id.action_global_activitiesPageFragment);
                 return true;
             }
@@ -100,11 +100,13 @@ public class GroupFragment extends Fragment implements OnGroupClickListener{
             }
 
             else{
-                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_SHORT).show();
                 return false;
             }
 
         });
+
+
     }
 
     @Override

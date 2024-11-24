@@ -1,14 +1,15 @@
 package com.example.splitshare.activity;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,10 @@ import android.view.ViewGroup;
 
 import com.example.splitshare.R;
 import com.example.splitshare.databinding.ActivitiesPageFragmentBinding;
+import com.example.splitshare.login.user.LoggedInUser;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 public class ActivitiesPageFragment extends Fragment {
 
@@ -46,8 +50,9 @@ public class ActivitiesPageFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mViewModel = new ViewModelProvider(this).get(ActivitiesPageViewModel.class);
 
-        //implemement the bottom nav
+        //bottom navbar implementation
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             NavController navController = Navigation.findNavController(view);
             if(item.getItemId() == R.id.homePageFragment){
@@ -60,7 +65,7 @@ public class ActivitiesPageFragment extends Fragment {
                 return true;
             }
 
-            else if(item.getItemId() == R.id.activitiesFragment){
+            else if(item.getItemId() == R.id.owesFragment){
                 navController.navigate(R.id.action_global_activitiesPageFragment);
                 return true;
             }
@@ -71,10 +76,35 @@ public class ActivitiesPageFragment extends Fragment {
             }
 
             else{
-                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_SHORT).show();
                 return false;
             }
 
         });
+
+
+        /*
+        //working on this. currently i am getting activities as null so it is causing the issue
+        binding.activitiesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.activitiesRecyclerView.setHasFixedSize(false);
+
+        ActivityViewAdapter adapter = new ActivityViewAdapter();
+        binding.activitiesRecyclerView.setAdapter(adapter);
+
+
+        final Observer<List<Activity>> activityObserver = new Observer<List<Activity>>() {
+            @Override
+            public void onChanged(List<Activity> activities) {
+                adapter.submitList(activities);
+            }
+        };
+
+        mViewModel.getActivityByUser(LoggedInUser.getInstance().getUser().getUserID()).observe(getViewLifecycleOwner(), activityObserver);
+
+         */
+
+
     }
+
+
 }

@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import com.example.splitshare.R;
 import com.example.splitshare.databinding.GroupInfoFragmentBinding;
 import com.example.splitshare.groups.allgroups.Group;
 import com.example.splitshare.groups.allgroups.showgroup.detailedgroup.DetailedGroup;
+import com.example.splitshare.groups.bills.showreceipts.DisplayReceiptClass;
+import com.example.splitshare.groups.bills.showreceipts.ShowReceiptViewAdapter;
 import com.example.splitshare.login.user.User;
 
 import java.util.List;
@@ -60,6 +63,7 @@ public class GroupInfoFragment extends Fragment {
             group = mViewModel.findGroupByID(detailedGroup.getGroupID());
 
             binding.groupNameTextView.setText(group.getGroupName().toString().toUpperCase());
+            binding.totalReceiptsTextView.setText(mViewModel.getTotalReceipts(group.getGroupID()).toString() + " receipts");
 //            binding.totalReceiptsTextView.setText(group.getTotalReceipt().toString() + " receipts");
             try {
                 binding.totalMembersTextView.setText(mViewModel.getTotalMembers(group.getGroupID()).toString());
@@ -112,6 +116,37 @@ public class GroupInfoFragment extends Fragment {
                 navController.navigate(R.id.action_groupInfoFragment_to_showBillsFragment, bundle);
             }
         });
+
+        binding.viewOwingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("GROUP", group);
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_groupInfoFragment_to_owesFragment3, bundle);
+            }
+        });
+        binding.recentReceiptsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recentReceiptsRecyclerView.setHasFixedSize(false); // setting it on true will not allow the recycler view to be flexible with wrap content
+
+        RecentReceiptViewAdapter adapter = new RecentReceiptViewAdapter();
+        binding.recentReceiptsRecyclerView.setAdapter(adapter);
+
+        Observer<List<DisplayReceiptClass>> allReceiptsObserver = new Observer<List<DisplayReceiptClass>>() {
+            @Override
+            public void onChanged(List<DisplayReceiptClass> latestReceipt) {
+                adapter.submitList(latestReceipt);
+            }
+
+            };
+
+        mViewModel.getRecentReceipts(group.getGroupID()).observe(getViewLifecycleOwner(), allReceiptsObserver);
+
+
+
+
+
+
 
 
     }

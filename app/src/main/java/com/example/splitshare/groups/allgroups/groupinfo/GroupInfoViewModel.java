@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.splitshare.groups.allgroups.Group;
+import com.example.splitshare.groups.bills.showreceipts.DisplayReceiptClass;
 import com.example.splitshare.login.user.User;
 import com.example.splitshare.room.SplitShareRepository;
 
@@ -34,6 +35,16 @@ public class GroupInfoViewModel extends AndroidViewModel {
 
     public Group findGroupByID(Integer groupID){
         return repository.findGroupByID(groupID);
+    }
+
+
+    public Integer getTotalReceipts(Integer groupID){
+        return repository.getTotalReceipts(groupID);
+
+    }
+
+    public LiveData<List<DisplayReceiptClass>> getRecentReceipts(Integer groupID){
+        return repository.getRecentReceipts(groupID);
     }
 
 

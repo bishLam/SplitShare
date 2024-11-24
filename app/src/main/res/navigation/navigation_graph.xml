@@ -109,6 +109,9 @@
         <action
             android:id="@+id/action_groupInfoFragment_to_showBillsFragment"
             app:destination="@id/showBillsFragment" />
+        <action
+            android:id="@+id/action_groupInfoFragment_to_owesFragment3"
+            app:destination="@id/owesFragment3" />
     </fragment>
     <fragment
         android:id="@+id/addNewMemberFragment"
@@ -132,6 +135,11 @@
         android:name="com.example.splitshare.groups.bills.showreceipts.ShowBillsFragment"
         android:label="show_bills_fragment"
         tools:layout="@layout/show_bills_fragment" />
+    <fragment
+        android:id="@+id/owesFragment3"
+        android:name="com.example.splitshare.groups.bills.settle.owes.OwesFragment"
+        android:label="owes_fragment"
+        tools:layout="@layout/owes_fragment" />
 
 
 </navigation>

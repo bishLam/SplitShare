@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C7DBE6"
+        android:background="#FFFFFF"
         tools:context=".homepage.HomePageFragment">
 
 
@@ -98,12 +98,13 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#D0D3A5"
+            android:background="#FFFFFF"
+            app:backgroundTint="#FFFFFF"
             app:elevation="4dp"
             app:itemIconSize="30dp"
             app:itemPaddingBottom="12dp"
             app:itemPaddingTop="15dp"
-            app:itemTextAppearanceActiveBoldEnabled="false"
+            app:itemTextAppearanceActiveBoldEnabled="true"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

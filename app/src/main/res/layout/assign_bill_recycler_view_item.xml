@@ -7,24 +7,29 @@
 
     <TextView
         android:id="@+id/toMemberText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="19dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="serif"
         android:text="To Member 1:"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/amountEditText"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/amountEditText"
         android:layout_width="0dp"
         android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="52dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/toMemberText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/toMemberText"
-        app:layout_constraintTop_toTopOf="@+id/toMemberText" />
+        app:layout_constraintTop_toTopOf="@+id/toMemberText"
+        app:layout_constraintVertical_bias="0.347" />
 </androidx.constraintlayout.widget.ConstraintLayout>

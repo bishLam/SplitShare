@@ -81,13 +81,13 @@ public class EditProfileFragment extends Fragment {
                 } else {
                     User loggedinUser = LoggedInUser.getInstance().getUser();
                     if (loggedinUser.getFirstName().equals(firstName) && loggedinUser.getLastName().equals(lastName) && loggedinUser.getEmail().equals(email) && loggedinUser.getPassword().equals(password) && loggedinUser.getPhoneNumber().equals(phoneNumber)) {
-                        Snackbar.make(view, "No changes made", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "No changes were made", Snackbar.LENGTH_LONG).show();
                     } else {
                         User user = new User(firstName, lastName, email, password, phoneNumber);
                         mViewModel.updateUserByUID(loggedinUser.getUserID(), firstName, lastName, email, password, phoneNumber);
                         LoggedInUser.getInstance().setUser(user);
                         NavController navController = Navigation.findNavController(view);
-                        Snackbar.make(view, "Profile updated successfully", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(view, "Profile updated successfully", Snackbar.LENGTH_SHORT).show();
                         navController.navigateUp();
                     }
                 }
