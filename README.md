@@ -1,0 +1,1 @@
+SplitShare is an bill splitting app which helps users to split bills when they upload the bill. This allows users to not have to worry about their bills. The application is just developed by me as part of the project on AIT.
