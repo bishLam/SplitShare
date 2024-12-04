@@ -21,7 +21,7 @@ public class ShowBillsViewModel extends AndroidViewModel {
         repository = new SplitShareRepository(application);
     }
 
-    public LiveData<List<DisplayReceiptClass>> getAllReceiptsByGroupID(Integer groupID){
+    public LiveData<List<DisplayReceiptClass>> getAllReceiptsByGroupID(Integer groupID) {
         return repository.getAllReceiptsByGroup(groupID);
     }
 

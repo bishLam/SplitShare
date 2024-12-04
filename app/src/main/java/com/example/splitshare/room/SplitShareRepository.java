@@ -15,6 +15,7 @@ import com.example.splitshare.groups.bills.settle.owes.OwesByAndTo;
 import com.example.splitshare.groups.bills.showreceipts.DisplayReceiptClass;
 import com.example.splitshare.groups.splitbill.SplitBillDetails;
 import com.example.splitshare.groups.splitbill.SplitBillDetailsDAO;
+import com.example.splitshare.homepage.DetailedReceiptClass;
 import com.example.splitshare.login.user.User;
 import com.example.splitshare.login.user.UserDAO;
 import com.example.splitshare.groups.bills.Receipt;
@@ -129,6 +130,21 @@ public class SplitShareRepository {
             ststusCode = 0L;
         }
         return ststusCode;
+    }
+
+    public String getUserNameFromUID(Integer UID) {
+        String userName;
+        Callable<String> callable = () -> {
+            return userDAO.getUserNameFromUID(UID);
+        };
+
+        Future<String> future = SplitShareRoomDatabase.DatabaseWriteExecutor.submit(callable);
+        try {
+            userName = future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            userName = " ";
+        }
+        return userName;
     }
 
 
@@ -302,7 +318,7 @@ public class SplitShareRepository {
     }
 
 
-    public Integer getTotalReceipts(Integer groupID){
+    public Integer getTotalReceipts(Integer groupID) {
         Callable<Integer> c = () -> {
             return Integer.parseInt(receiptDAO.getTotalReceipts(groupID).toString());
         };
@@ -319,9 +335,22 @@ public class SplitShareRepository {
     }
 
     public LiveData<List<DisplayReceiptClass>> getRecentReceipts(Integer groupID) {
-    return receiptDAO.getRecentReceipts(groupID);
+        return receiptDAO.getRecentReceipts(groupID);
     }
 
+    public List<DetailedReceiptClass> getDetailedReceiptsByUser(Integer userID) {
+        Callable<List<DetailedReceiptClass>> c = () -> {
+            return receiptDAO.getDetailedReceiptsByUser(userID);
+        };
+
+        Future<List<DetailedReceiptClass>> future = SplitShareRoomDatabase.DatabaseWriteExecutor.submit(c);
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            Log.e("Exception", "Exception occured");
+            return null;
+        }
+    }
 
 
     //METHODS FROM SPLIT_BILL_DETAILS_DAO TABLE
@@ -369,10 +398,30 @@ public class SplitShareRepository {
         }
     }
 
-    public LiveData<List<Activity>> getActivityByUser(Integer userID){
+    public LiveData<List<Activity>> getActivityByUser(Integer userID) {
         return receiptDAO.getActivityByUser(userID);
     }
 
+    public void settleBillByUserToGroup(Integer userID, Integer groupID) {
+        SplitShareRoomDatabase.DatabaseWriteExecutor.execute(() -> {
+            splitBillDAO.settleBillByUserToGroup(userID, groupID);
+        });
+    }
+
+    public void settleBillByUserToUser(Integer settledBy, Integer groupID, Integer settledTo) {
+        SplitShareRoomDatabase.DatabaseWriteExecutor.execute(() -> {
+            splitBillDAO.settleBillByUserToUser(settledBy, groupID, settledTo);
+        });
+    }
+
+
+    public LiveData<List<Activity>> filterActivitySettled(Integer userID) {
+        return receiptDAO.filterActivitySettled(userID);
+    }
+
+    public LiveData<List<Activity>> filterActivityActive(Integer userID) {
+        return receiptDAO.filterActivityActive(userID);
+    }
 
 
 }

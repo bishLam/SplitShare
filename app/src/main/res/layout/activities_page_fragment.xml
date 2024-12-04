@@ -5,6 +5,7 @@
     android:id="@+id/activityFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="80dp"
     tools:context=".activity.ActivitiesPageFragment">
 
     <TextView
@@ -20,22 +21,9 @@
         app:layout_constraintStart_toStartOf="@+id/guideline16"
         app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        app:elevation="4dp"
-        app:itemIconSize="30dp"
-        app:itemPaddingBottom="12dp"
-        app:itemPaddingTop="15dp"
-        app:itemTextAppearanceActiveBoldEnabled="true"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline16"
@@ -83,8 +71,48 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline16"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintTop_toTopOf="@+id/textView4">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/settledChip"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:text="Settled"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/activeChip"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Active"/>
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/noActivitiesText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:text="You do not have any activities yet."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toBottomOf="@+id/activitiesRecyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

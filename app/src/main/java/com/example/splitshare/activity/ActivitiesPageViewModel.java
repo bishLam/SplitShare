@@ -13,13 +13,22 @@ import java.util.List;
 
 public class ActivitiesPageViewModel extends AndroidViewModel {
     private final SplitShareRepository repository;
+
     public ActivitiesPageViewModel(@NonNull Application application) {
         super(application);
         repository = new SplitShareRepository(application);
     }
     // TODO: Implement the ViewModel
 
-    public LiveData<List<Activity>> getActivityByUser(Integer id){
+    public LiveData<List<Activity>> getActivityByUser(Integer id) {
         return repository.getActivityByUser(id);
+    }
+
+    public LiveData<List<Activity>> filterActivitySettled(Integer userID) {
+        return repository.filterActivitySettled(userID);
+    }
+
+    public LiveData<List<Activity>> filterActivityActive(Integer userID) {
+        return repository.filterActivityActive(userID);
     }
 }

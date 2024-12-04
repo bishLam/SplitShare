@@ -10,10 +10,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.splitshare.MainActivity;
 import com.example.splitshare.R;
 import com.example.splitshare.databinding.LoginPageFragmentBinding;
 import com.example.splitshare.login.loginpage.exceptions.UserNotFoundException;
@@ -36,6 +39,7 @@ public class LoginPageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.login_page_fragment, container, false);
+
         binding = LoginPageFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -45,6 +49,13 @@ public class LoginPageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(requireActivity()).get(LoginPageViewModel.class);
+
+
+        MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity.hideBottomNavBar();
+
+        binding.emailLoginTIL.getEditText().setText(mViewModel.getEmail());
+        binding.passwordLoginTIL.getEditText().setText(mViewModel.getPassword());
 
         binding.loginBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +69,8 @@ public class LoginPageFragment extends Fragment {
                         Snackbar.make(view, "Log in Successful", Snackbar.LENGTH_SHORT).show();
                         mViewModel.setLoggedInUser(mViewModel.getUserbyEmail(userName));
                         LoggedInUser.getInstance().setUser(mViewModel.getLoggedInUser());
+                        binding.emailLoginTIL.getEditText().setText("");
+                        binding.passwordLoginTIL.getEditText().setText("");
                         NavController navController = Navigation.findNavController(view);
                         navController.navigate(R.id.action_loginPageFragment_to_homePageFragment);
 
@@ -82,6 +95,41 @@ public class LoginPageFragment extends Fragment {
             public void onClick(View view) {
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_loginPageFragment_to_signupFragment);
+            }
+        });
+
+        //this is for the configuration change
+        binding.emailLoginTIL.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                mViewModel.setEmail(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        binding.passwordLoginTIL.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                mViewModel.setPassword(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 

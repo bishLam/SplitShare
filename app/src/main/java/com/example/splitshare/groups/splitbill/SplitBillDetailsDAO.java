@@ -36,8 +36,15 @@ public interface SplitBillDetailsDAO {
             "INNER JOIN RECEIPT AS R ON S.RECEIPT_ID = R.RECEIPT_ID\n" +
             "INNER JOIN USER AS OBY ON S.RECEIVER_USER_ID = OBY.USER_ID\n" +
             "INNER JOIN USER AS OTO ON R.USER_ID = OTO.USER_ID \n" +
-            "WHERE S.RECEIVER_USER_ID  =:owedByUID AND R.USER_ID =:owedToUID AND R.GROUP_ID = :groupID")
+            "WHERE S.RECEIVER_USER_ID  =:owedByUID AND R.USER_ID =:owedToUID AND R.GROUP_ID = :groupID AND S.STATUS = 'assigned'")
     OwesByAndTo getOwedMoneyByUserToUser(Integer owedByUID, Integer owedToUID, Integer groupID);
+
+
+    @Query("UPDATE SPLIT_BILL_DETAILS SET STATUS = 'settled' WHERE RECEIVER_USER_ID = :userID AND RECEIPT_ID IN (SELECT RECEIPT_ID FROM RECEIPT WHERE GROUP_ID = :groupID)")
+    void settleBillByUserToGroup(Integer userID, Integer groupID);
+
+    @Query("UPDATE SPLIT_BILL_DETAILS SET STATUS = 'settled' WHERE RECEIVER_USER_ID = :settledBy AND RECEIPT_ID IN (SELECT RECEIPT_ID FROM RECEIPT WHERE GROUP_ID = :groupID AND USER_ID = :settledTo)")
+    void settleBillByUserToUser(Integer settledBy, Integer groupID, Integer settledTo);
 }
 
 

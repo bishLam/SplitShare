@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingBottom="80dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,18 +13,32 @@
         tools:context=".groups.allgroups.groupinfo.GroupInfoFragment">
 
 
+        <TextView
+            android:id="@+id/noReceiptsText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="You do not have any receipts yet."
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/guideline12"
+            app:layout_constraintStart_toStartOf="@+id/guideline13"
+            app:layout_constraintTop_toBottomOf="@+id/recentReceiptsRecyclerView" />
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/newBillFAB"
             android:layout_width="142dp"
             android:layout_height="56dp"
-            android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:layout_marginEnd="16dp"
             android:contentDescription="Extended FAB"
             android:text="New Bill"
+            android:textAlignment="center"
             app:icon="@drawable/add"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline12" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline13" />
 
         <TextView
             android:id="@+id/groupNameTextView"
@@ -50,11 +65,11 @@
             android:layout_height="70dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/logo"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintBottom_toBottomOf="@+id/optionsImageGroupInfo"
             app:layout_constraintEnd_toStartOf="@+id/imageView7"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toTopOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/optionsImageGroupInfo"
             app:layout_constraintVertical_bias="0.285" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -67,10 +82,11 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/optionsImageGroupInfo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/ellipses"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintTop_toTopOf="parent" />
@@ -165,7 +181,8 @@
             style="@android:style/Widget.Material.Light.Button.Toggle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="View All Bills"
+            android:layout_marginTop="52dp"
+            android:text="View All"
             android:textAllCaps="true"
             app:layout_constraintEnd_toStartOf="@+id/guideline12"
             app:layout_constraintTop_toBottomOf="@+id/recentReceiptsRecyclerView" />

@@ -12,6 +12,7 @@ import com.example.splitshare.groups.bills.showreceipts.DisplayReceiptClass;
 
 public class RecentReceiptViewAdapter extends ListAdapter<DisplayReceiptClass, RecentReceiptViewHolder> {
     private RecentReceiptRecyclerViewItemBinding binding;
+
     protected RecentReceiptViewAdapter() {
         super(DIFF_CALLBACK);
     }

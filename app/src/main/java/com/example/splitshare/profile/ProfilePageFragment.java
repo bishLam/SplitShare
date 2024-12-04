@@ -18,6 +18,7 @@ import com.example.splitshare.R;
 import com.example.splitshare.databinding.ProfilePageFragmentBinding;
 import com.example.splitshare.login.user.LoggedInUser;
 import com.example.splitshare.login.user.User;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
 public class ProfilePageFragment extends Fragment {
@@ -34,17 +35,8 @@ public class ProfilePageFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.profile_page_fragment, container, false);
         binding = ProfilePageFragmentBinding.inflate(inflater, container, false);
-          return binding.getRoot();
+        return binding.getRoot();
     }
-
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = new ViewModelProvider(this).get(ProfilePageViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -66,45 +58,24 @@ public class ProfilePageFragment extends Fragment {
         binding.logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavController navController = Navigation.findNavController(view);
-                LoggedInUser.getInstance().clearUser();
-                navController.navigate(R.id.action_profilePageFragment_to_loginPageFragment);
+
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getContext());
+                builder.setTitle("Are you sure to log out?");
+                builder.setMessage("You will be logged out of the application");
+                builder.setPositiveButton("Yes", (dialogInterface, i) -> {
+                    NavController navController = Navigation.findNavController(view);
+                    LoggedInUser.getInstance().clearUser();
+                    navController.navigate(R.id.action_profilePageFragment_to_loginPageFragment);
+                    Snackbar.make(view, "Logged out successfully", Snackbar.LENGTH_SHORT).show();
+                    dialogInterface.cancel();
+                });
+                builder.setNegativeButton("No", (dialogInterface, i) -> {
+                    dialogInterface.cancel();
+                });
+                builder.show();
             }
         });
 
 
-
-
-
-
-        //bottom navbar implementation
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            NavController navController = Navigation.findNavController(view);
-            if(item.getItemId() == R.id.homePageFragment){
-                navController.navigate(R.id.action_global_homePageFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.groupFragment){
-                navController.navigate(R.id.action_global_groupFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.owesFragment){
-                navController.navigate(R.id.action_global_activitiesPageFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.profileFragment){
-                navController.navigate(R.id.action_global_profilePageFragment);
-                return true;
-            }
-
-            else{
-                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_SHORT).show();
-                return false;
-            }
-
-        });
     }
 }

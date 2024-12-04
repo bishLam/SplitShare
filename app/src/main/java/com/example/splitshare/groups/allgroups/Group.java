@@ -23,28 +23,28 @@ public class Group implements Serializable {
     @ColumnInfo(name = "GROUP_DESCRIPTION")
     private String groupDescription;
 
-    @ColumnInfo(name = "TOTAL_RECEIPTS")
-    private Integer totalReceipts;
+//    @ColumnInfo(name = "TOTAL_RECEIPTS")
+//    private Integer totalReceipts;
+//
+//    @ColumnInfo(name = "LAST_RECEIPT")
+//    private Date lastReceipt;
+//
+//    @ColumnInfo(name = "CURRENT_STATE")
+//    private String currentState;
 
-    @ColumnInfo(name = "LAST_RECEIPT")
-    private Date lastReceipt;
-
-    @ColumnInfo(name = "CURRENT_STATE")
-    private String currentState;
-
-    @Ignore
-    private Integer totalMembers;
+//    @Ignore
+//    private Integer totalMembers;
 
     @Ignore
     public Group() {
     }
 
-    public Group(String groupName, String groupDescription, Integer totalReceipts, Date lastReceipt, String currentState) {
+    public Group(String groupName, String groupDescription) {
         this.groupName = groupName;
         this.groupDescription = groupDescription;
-        this.totalReceipts = totalReceipts;
-        this.lastReceipt = lastReceipt;
-        this.currentState = currentState;
+//        this.totalReceipts = totalReceipts;
+//        this.lastReceipt = lastReceipt;
+//        this.currentState = currentState;
     }
 
     public Integer getGroupID() {
@@ -71,29 +71,29 @@ public class Group implements Serializable {
         this.groupDescription = groupDescription;
     }
 
-    public Integer getTotalReceipts() {
-        return totalReceipts;
-    }
-
-    public void setTotalReceipts(Integer totalReceipts) {
-        this.totalReceipts = totalReceipts;
-    }
-
-    public Date getLastReceipt() {
-        return lastReceipt;
-    }
-
-    public void setLastReceipt(Date lastReceipt) {
-        this.lastReceipt = lastReceipt;
-    }
-
-    public String getCurrentState() {
-        return currentState;
-    }
-
-    public void setCurrentState(String currentState) {
-        this.currentState = currentState;
-    }
+//    public Integer getTotalReceipts() {
+//        return totalReceipts;
+//    }
+//
+//    public void setTotalReceipts(Integer totalReceipts) {
+//        this.totalReceipts = totalReceipts;
+//    }
+//
+//    public Date getLastReceipt() {
+//        return lastReceipt;
+//    }
+//
+//    public void setLastReceipt(Date lastReceipt) {
+//        this.lastReceipt = lastReceipt;
+//    }
+//
+//    public String getCurrentState() {
+//        return currentState;
+//    }
+//
+//    public void setCurrentState(String currentState) {
+//        this.currentState = currentState;
+//    }
 
     @Override
     public String toString() {
@@ -101,16 +101,16 @@ public class Group implements Serializable {
                 "groupID=" + groupID +
                 ", groupName='" + groupName + '\'' +
                 ", groupDescription='" + groupDescription + '\'' +
-                ", totalReceipts=" + totalReceipts +
-                ", lastReceipt=" + lastReceipt +
+//                ", totalReceipts=" + totalReceipts +
+//                ", lastReceipt=" + lastReceipt +
                 '}';
     }
 
-    public Integer getTotalMembers() {
-        return totalMembers;
-    }
-
-    public void setTotalMembers(Integer totalMembers) {
-        this.totalMembers = totalMembers;
-    }
+//    public Integer getTotalMembers() {
+//        return totalMembers;
+//    }
+//
+//    public void setTotalMembers(Integer totalMembers) {
+//        this.totalMembers = totalMembers;
+//    }
 }

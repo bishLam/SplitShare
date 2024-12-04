@@ -13,17 +13,18 @@ import java.util.List;
 
 public class OwesViewModel extends AndroidViewModel {
     private final SplitShareRepository repository;
+
     public OwesViewModel(@NonNull Application application) {
         super(application);
         repository = new SplitShareRepository(application);
     }
     // TODO: Implement the ViewModel
 
-    public OwesByAndTo getOwedMoneyByUserToUser(Integer owedBy, Integer owedTo, Integer groupID){
+    public OwesByAndTo getOwedMoneyByUserToUser(Integer owedBy, Integer owedTo, Integer groupID) {
         return repository.getOwedMoneyByUserToUser(owedBy, owedTo, groupID);
     }
 
-    public List<Integer> getAllUsersInGroup(Integer groupID){
+    public List<Integer> getAllUsersInGroup(Integer groupID) {
         return repository.getUsersInAGroup(groupID);
     }
 }

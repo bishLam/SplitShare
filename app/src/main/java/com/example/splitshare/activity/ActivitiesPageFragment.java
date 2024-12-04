@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import com.example.splitshare.R;
 import com.example.splitshare.databinding.ActivitiesPageFragmentBinding;
@@ -36,7 +37,7 @@ public class ActivitiesPageFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.activities_page_fragment, container, false);
         binding = ActivitiesPageFragmentBinding.inflate(inflater, container, false);
-        return  binding.getRoot();
+        return binding.getRoot();
     }
 
 
@@ -52,41 +53,12 @@ public class ActivitiesPageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(ActivitiesPageViewModel.class);
 
-        //bottom navbar implementation
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            NavController navController = Navigation.findNavController(view);
-            if(item.getItemId() == R.id.homePageFragment){
-                navController.navigate(R.id.action_global_homePageFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.groupFragment){
-                navController.navigate(R.id.action_global_groupFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.owesFragment){
-                navController.navigate(R.id.action_global_activitiesPageFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.profileFragment){
-                navController.navigate(R.id.action_global_profilePageFragment);
-                return true;
-            }
-
-            else{
-                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_SHORT).show();
-                return false;
-            }
-
-        });
-
-
-        /*
         //working on this. currently i am getting activities as null so it is causing the issue
-        binding.activitiesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setReverseLayout(true);
+        binding.activitiesRecyclerView.setLayoutManager(layoutManager);
         binding.activitiesRecyclerView.setHasFixedSize(false);
+
 
         ActivityViewAdapter adapter = new ActivityViewAdapter();
         binding.activitiesRecyclerView.setAdapter(adapter);
@@ -96,12 +68,61 @@ public class ActivitiesPageFragment extends Fragment {
             @Override
             public void onChanged(List<Activity> activities) {
                 adapter.submitList(activities);
+                if (activities.size() <= 0) {
+                    binding.noActivitiesText.setVisibility(View.VISIBLE);
+                    binding.activitiesRecyclerView.setVisibility(View.GONE);
+                } else {
+                    binding.noActivitiesText.setVisibility(View.GONE);
+                    binding.activitiesRecyclerView.setVisibility(View.VISIBLE);
+                }
             }
         };
 
-        mViewModel.getActivityByUser(LoggedInUser.getInstance().getUser().getUserID()).observe(getViewLifecycleOwner(), activityObserver);
 
-         */
+        mViewModel.getActivityByUser(LoggedInUser.getInstance().getUser().getUserID()).observe(getViewLifecycleOwner(), activityObserver);
+        if (adapter.getItemCount() - 1 >= 0) {
+            binding.activitiesRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
+        }
+
+
+        binding.activeChip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                updateRecyclerView(activityObserver, adapter);
+//                binding.activitiesRecyclerView.scrollToPosition(0);
+                if (adapter.getItemCount() - 1 >= 0) {
+                    binding.activitiesRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
+                }
+            }
+
+        });
+
+        binding.settledChip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                updateRecyclerView(activityObserver, adapter);
+                binding.activitiesRecyclerView.scrollToPosition(0);
+
+                //scroll to top of the recycler view
+                if (adapter.getItemCount() - 1 >= 0) {
+                    binding.activitiesRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
+                }
+            }
+        });
+
+
+    }
+
+    public void updateRecyclerView(Observer<List<Activity>> activityObserver, ActivityViewAdapter adapter) {
+        if (binding.activeChip.isChecked() && binding.settledChip.isChecked()) {
+            mViewModel.getActivityByUser(LoggedInUser.getInstance().getUser().getUserID()).observe(getViewLifecycleOwner(), activityObserver);
+        } else if (binding.activeChip.isChecked() && !binding.settledChip.isChecked()) {
+            mViewModel.filterActivityActive(LoggedInUser.getInstance().getUser().getUserID()).observe(getViewLifecycleOwner(), activityObserver);
+        } else if (binding.settledChip.isChecked() && !binding.activeChip.isChecked()) {
+            mViewModel.filterActivitySettled(LoggedInUser.getInstance().getUser().getUserID()).observe(getViewLifecycleOwner(), activityObserver);
+        } else if (!binding.settledChip.isChecked() && !binding.activeChip.isChecked()) {
+            mViewModel.getActivityByUser(LoggedInUser.getInstance().getUser().getUserID()).observe(getViewLifecycleOwner(), activityObserver);
+        }
 
 
     }

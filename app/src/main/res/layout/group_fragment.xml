@@ -6,7 +6,8 @@
     android:id="@+id/groupFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingBottom="80dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
@@ -16,22 +17,19 @@
         tools:context=".groups.allgroups.showgroup.GroupFragment">
 
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+        <TextView
+            android:id="@+id/noActivitiesText3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            app:elevation="4dp"
-            app:itemIconSize="30dp"
-            app:itemPaddingBottom="12dp"
-            app:itemPaddingTop="15dp"
-            app:itemTextAppearanceActiveBoldEnabled="true"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu" />
+            android:layout_marginTop="232dp"
+            android:text="You do not have any groups yet. \nCreate a group to see the group details here"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -91,13 +89,11 @@
             android:id="@+id/GroupsRecyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/newGroupFAB"
@@ -110,7 +106,7 @@
             android:text="New Group"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:icon="@drawable/add"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline8" />
 
 

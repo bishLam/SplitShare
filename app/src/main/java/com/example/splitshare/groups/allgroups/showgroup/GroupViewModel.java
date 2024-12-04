@@ -31,7 +31,7 @@ public class GroupViewModel extends AndroidViewModel {
 
     public Integer getTotalMembers(Integer groupID) throws ExecutionException, InterruptedException {
         return repository.getTotalMembers(groupID);
-    };
+    }
 
     public LiveData<List<DetailedGroup>> getDetailedGroup(Integer userID) {
         return repository.getDetailedGroup(userID);

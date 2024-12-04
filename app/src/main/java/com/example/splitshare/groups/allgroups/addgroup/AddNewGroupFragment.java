@@ -18,6 +18,7 @@ import com.example.splitshare.composite_tables.UserGroup;
 import com.example.splitshare.databinding.AddNewGroupFragmentBinding;
 import com.example.splitshare.groups.allgroups.Group;
 import com.example.splitshare.login.loginpage.LoginPageViewModel;
+import com.example.splitshare.login.user.LoggedInUser;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
@@ -38,8 +39,8 @@ public class AddNewGroupFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.add_new_group_fragment, container, false);
-    binding = AddNewGroupFragmentBinding.inflate(inflater, container, false);
-    return binding.getRoot();
+        binding = AddNewGroupFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
 
@@ -54,11 +55,11 @@ public class AddNewGroupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mViewModel = new ViewModelProvider(this).get(AddNewGroupViewModel.class);
-        loginPageViewModel = new ViewModelProvider(requireActivity()).get(LoginPageViewModel.class);
-        Integer UID = loginPageViewModel.getLoggedInUser().getUserID();
+//        loginPageViewModel = new ViewModelProvider(requireActivity()).get(LoginPageViewModel.class);
+//        Integer UID = loginPageViewModel.getLoggedInUser().getUserID();
 
+        Integer UID = LoggedInUser.getInstance().getUser().getUserID();
         super.onViewCreated(view, savedInstanceState);
-
 
 
         binding.addGroupButton.setOnClickListener(new View.OnClickListener() {
@@ -66,38 +67,30 @@ public class AddNewGroupFragment extends Fragment {
             public void onClick(View view) {
                 String groupName = binding.groupNameTIL.getEditText().getText().toString().trim();
                 String groupDescription = binding.groupDescriptionTIL.getEditText().getText().toString().trim();
-                if(!groupName.isEmpty() && !groupDescription.isEmpty()){
+                if (!groupName.isEmpty() && !groupDescription.isEmpty()) {
                     try {
                         UserGroup userGroup = mViewModel.findGroupByGroupNameAndUID(groupName, UID);
-                        if(userGroup == null){
-                            Group group = new Group(groupName, groupDescription, 0, new Date(), "Active");
+                        if (userGroup == null) {
+                            Group group = new Group(groupName, groupDescription);
                             Integer groupID = Math.toIntExact(mViewModel.addGroup(group));
-                            UserGroup userGroup1 = new UserGroup(UID, groupID, 0.0, 0.0);
+                            UserGroup userGroup1 = new UserGroup(UID, groupID);
                             mViewModel.addNewUserGroup(userGroup1);
                             Snackbar.make(view, "Group Added Successfully", Snackbar.LENGTH_LONG).show();
                             NavController navController = Navigation.findNavController(view);
                             navController.navigateUp();
-                        }
-                        else{
+                        } else {
                             Snackbar.make(view, "Group already exists", Snackbar.LENGTH_LONG).show();
-
 
 
                         }
                     } catch (ExecutionException | InterruptedException e) {
                         Snackbar.make(view, "Something went wrong", Snackbar.LENGTH_LONG).show();
                     }
-                }
-
-                else{
+                } else {
                     Snackbar.make(view, "Please fill all the fields", Snackbar.LENGTH_LONG).show();
                 }
             }
         });
-
-
-
-
 
 
     }

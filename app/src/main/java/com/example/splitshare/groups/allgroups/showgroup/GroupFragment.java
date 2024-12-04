@@ -25,7 +25,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-public class GroupFragment extends Fragment implements OnGroupClickListener{
+public class GroupFragment extends Fragment implements OnGroupClickListener {
     private GroupFragmentBinding binding;
 
     public static GroupFragment newInstance() {
@@ -59,6 +59,13 @@ public class GroupFragment extends Fragment implements OnGroupClickListener{
             @Override
             public void onChanged(List<DetailedGroup> groups) {
                 adapter.submitList(groups);
+                if (groups.size() <= 0) {
+                    binding.noActivitiesText3.setVisibility(View.VISIBLE);
+                    binding.GroupsRecyclerView.setVisibility(View.GONE);
+                } else {
+                    binding.noActivitiesText3.setVisibility(View.GONE);
+                    binding.GroupsRecyclerView.setVisibility(View.VISIBLE);
+                }
             }
         };
 
@@ -74,36 +81,6 @@ public class GroupFragment extends Fragment implements OnGroupClickListener{
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_groupFragment_to_addNewGroupFragment);
             }
-        });
-
-        //bottom navbar implementation
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            NavController navController = Navigation.findNavController(view);
-            if(item.getItemId() == R.id.homePageFragment){
-                navController.navigate(R.id.action_global_homePageFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.groupFragment){
-                navController.navigate(R.id.action_global_groupFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.owesFragment){
-                navController.navigate(R.id.action_global_activitiesPageFragment);
-                return true;
-            }
-
-            else if(item.getItemId() == R.id.profileFragment){
-                navController.navigate(R.id.action_global_profilePageFragment);
-                return true;
-            }
-
-            else{
-                Snackbar.make(view, "Something wasn't right", Snackbar.LENGTH_SHORT).show();
-                return false;
-            }
-
         });
 
 

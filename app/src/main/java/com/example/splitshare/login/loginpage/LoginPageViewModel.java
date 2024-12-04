@@ -15,6 +15,8 @@ import java.util.concurrent.ExecutionException;
 public class LoginPageViewModel extends AndroidViewModel {
     private User loggedInUser;
     private final SplitShareRepository repository;
+    private String email = "";
+    private String password = "";
 
     public LoginPageViewModel(@NonNull Application application) {
         super(application);
@@ -33,9 +35,7 @@ public class LoginPageViewModel extends AndroidViewModel {
                     loggedInUser = null;
                     throw new WrongPasswordException("");
                 }
-            }
-
-            else{
+            } else {
                 throw new UserNotFoundException("No user found");
             }
         } catch (ExecutionException e) {
@@ -43,11 +43,11 @@ public class LoginPageViewModel extends AndroidViewModel {
         }
     }
 
-    public User getLoggedInUser(){
+    public User getLoggedInUser() {
         return loggedInUser;
     }
 
-    public void setLoggedInUser(User user){
+    public void setLoggedInUser(User user) {
         this.loggedInUser = user;
     }
 
@@ -55,5 +55,22 @@ public class LoginPageViewModel extends AndroidViewModel {
         return repository.findUserByEmail(email);
     }
 
+    //this is for the configuration changes
 
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

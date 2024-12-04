@@ -1,181 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingBottom="80dp">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/frameLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".groups.bills.addreceipt.AddNewBillFragment">
-
-
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".groups.bills.addreceipt.AddNewBillFragment">
 
 
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Description"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/billAmountEditText" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Description"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/billAmountEditText" />
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Divide bill by"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
 
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Divide bill by"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+        <EditText
+            android:id="@+id/billAmountEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
-    <EditText
-        android:id="@+id/billAmountEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        <TextView
+            android:id="@+id/textView13"
+            style="@android:style/Widget.Holo.TextView.SpinnerItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Adding a bill"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/imageView111" />
 
-    <TextView
-        android:id="@+id/textView13"
-        style="@android:style/Widget.Holo.TextView.SpinnerItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Adding a bill"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/imageView111" />
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/ellipses"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="36dp"
-        android:src="@drawable/ellipses"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView111"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+            app:layout_constraintEnd_toStartOf="@+id/imageView9"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toTopOf="@+id/imageView9"
+            app:layout_constraintVertical_bias="0.812" />
 
-    <ImageView
-        android:id="@+id/imageView111"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-        app:layout_constraintEnd_toStartOf="@+id/imageView9"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toTopOf="@+id/imageView9"
-        app:layout_constraintVertical_bias="0.812" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.04"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.96" />
+        <TextView
+            android:id="@+id/groupNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Group Name"
+            app:layout_constraintBottom_toBottomOf="@+id/textView13"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintTop_toTopOf="@+id/textView13" />
 
-    <TextView
-        android:id="@+id/groupNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Group Name"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Bill Amount"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Bill Amount"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
-    <EditText
-        android:id="@+id/descriptionEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        <TextView
+            android:id="@+id/enterSomethingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Enter Amount"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-    <TextView
-        android:id="@+id/enterSomethingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Enter Amount"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        <Button
+            android:id="@+id/addBillButton"
+            style="@android:style/Widget.Material.Button.Toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:text="Add bill"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintTop_toBottomOf="@+id/assignBillRecyclerView" />
 
-    <Button
-        android:id="@+id/addBillButton"
-        style="@android:style/Widget.Material.Button.Toggle"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
-        android:text="Add bill"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toBottomOf="@+id/assignBillRecyclerView" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/assignBillRecyclerView"
-        android:layout_width="363dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline14"
-        app:layout_constraintTop_toBottomOf="@+id/enterSomethingText" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/assignBillRecyclerView"
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/enterSomethingText" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

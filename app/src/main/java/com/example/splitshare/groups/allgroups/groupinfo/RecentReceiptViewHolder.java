@@ -10,12 +10,13 @@ import com.example.splitshare.groups.bills.showreceipts.DisplayReceiptClass;
 
 public class RecentReceiptViewHolder extends RecyclerView.ViewHolder {
     private RecentReceiptRecyclerViewItemBinding binding;
+
     public RecentReceiptViewHolder(@NonNull RecentReceiptRecyclerViewItemBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
 
-    public void update(DisplayReceiptClass receipt){
+    public void update(DisplayReceiptClass receipt) {
         binding.amountTextView.setText("$ " + receipt.getReceiptAmount());
         binding.billAdderTextView.setText(receipt.getFirstName() + " added a bill");
     }

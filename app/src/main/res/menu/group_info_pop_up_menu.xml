@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/leave_group"
+        android:icon="@drawable/exit"
+        android:iconTint="#2B2525"
+        android:iconTintMode="multiply"
+        android:title="Leave Group" />
+    <item
+        android:id="@+id/report_problem"
+        android:icon="@drawable/report_problem"
+        android:title="Report a problem" />
+</menu>

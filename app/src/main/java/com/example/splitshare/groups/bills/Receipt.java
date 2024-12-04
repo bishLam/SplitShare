@@ -14,7 +14,7 @@ import com.example.splitshare.login.user.User;
 
 import java.util.Date;
 
-@Entity (tableName = "RECEIPT" ,
+@Entity(tableName = "RECEIPT",
         indices = {
                 @Index(value = "RECEIPT_ID"),
                 @Index(value = "USER_ID"),

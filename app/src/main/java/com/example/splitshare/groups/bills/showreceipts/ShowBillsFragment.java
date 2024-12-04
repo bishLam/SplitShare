@@ -55,7 +55,7 @@ public class ShowBillsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        if(bundle != null && bundle.containsKey("GROUP")){
+        if (bundle != null && bundle.containsKey("GROUP")) {
             group = (Group) bundle.getSerializable("GROUP");
             binding.groupNameTextView.setText(group.getGroupName());
         }
@@ -80,10 +80,6 @@ public class ShowBillsFragment extends Fragment {
         };
 
         mViewModel.getAllReceiptsByGroupID(group.getGroupID()).observe(getViewLifecycleOwner(), observer);
-
-
-
-
 
 
     }

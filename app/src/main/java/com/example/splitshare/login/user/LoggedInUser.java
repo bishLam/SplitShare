@@ -5,8 +5,8 @@ public class LoggedInUser {
     private static LoggedInUser instance;
     private User user;
 
-    public static synchronized LoggedInUser getInstance(){
-        if(instance == null){
+    public static synchronized LoggedInUser getInstance() {
+        if (instance == null) {
             instance = new LoggedInUser();
         }
         return instance;
@@ -20,7 +20,7 @@ public class LoggedInUser {
         this.user = user;
     }
 
-    public void clearUser(){
+    public void clearUser() {
         this.user = null;
     }
 }

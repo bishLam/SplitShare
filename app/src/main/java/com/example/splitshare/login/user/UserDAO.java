@@ -27,4 +27,7 @@ public interface UserDAO {
 
     @Query("UPDATE USER SET FIRST_NAME = :firstName, LAST_NAME = :lastName, EMAIL = :email, PASSWORD = :password, PHONE_NUMBER = :phoneNumber WHERE USER_ID = :id")
     int updateUserByUID(Integer id, String firstName, String lastName, String email, String password, String phoneNumber);
+
+    @Query("SELECT FIRST_NAME FROM USER WHERE USER_ID = :UID")
+    String getUserNameFromUID(Integer UID);
 }

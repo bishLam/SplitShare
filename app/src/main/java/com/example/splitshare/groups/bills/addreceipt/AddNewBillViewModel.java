@@ -34,8 +34,8 @@ public class AddNewBillViewModel extends AndroidViewModel {
         return repository.insert(splitBillDetails);
     }
 
-    public Integer getAllUsersCount(Integer groupID){
-        List<Integer> users =repository.getUsersInAGroup(groupID);
+    public Integer getAllUsersCount(Integer groupID) {
+        List<Integer> users = repository.getUsersInAGroup(groupID);
         return users.size();
     }
 }

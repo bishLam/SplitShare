@@ -116,41 +116,39 @@ public class AddNewBillFragment extends Fragment {
         spinner.setAdapter(adapter);
 
         /**
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 0) {
-                    binding.enterSomethingText.setText("Enter Amount:");
-                } else if (i == 1) {
+         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        @Override public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        if (i == 0) {
+        binding.enterSomethingText.setText("Enter Amount:");
+        } else if (i == 1) {
 
-                    try {
-                        //get the amount and convert it into the double
-                        amount = Double.parseDouble(binding.billAmountEditText.getText().toString());
-                    } catch (NumberFormatException e) {
-                        Snackbar.make(view, "Amount can only be numbers and decimal", Snackbar.LENGTH_LONG).show();
-                    }
-                    if(amount > 0) {
-                        Integer usersCount = mViewModel.getAllUsersCount(group.getGroupID());
-                        binding.enterSomethingText.setText("Splitted Amount: " + amount/usersCount);
-                        binding.assignBillRecyclerView.setVisibility(View.GONE);
-                    }
+        try {
+        //get the amount and convert it into the double
+        amount = Double.parseDouble(binding.billAmountEditText.getText().toString());
+        } catch (NumberFormatException e) {
+        Snackbar.make(view, "Amount can only be numbers and decimal", Snackbar.LENGTH_LONG).show();
+        }
+        if(amount > 0) {
+        Integer usersCount = mViewModel.getAllUsersCount(group.getGroupID());
+        binding.enterSomethingText.setText("Splitted Amount: " + amount/usersCount);
+        binding.assignBillRecyclerView.setVisibility(View.GONE);
+        }
 
-                    else{
-                        spinner.setSelected(false);
-                        Snackbar.make(view, "Please enter a valid bill amount", Snackbar.LENGTH_SHORT).show();
-                    }
+        else{
+        spinner.setSelected(false);
+        Snackbar.make(view, "Please enter a valid bill amount", Snackbar.LENGTH_SHORT).show();
+        }
 
-                } else if (i == 2) {
-                    binding.enterSomethingText.setText("Enter Percentage");
-                } else {
-                    binding.enterSomethingText.setText("Nothing Selected");
-                }
-            }
+        } else if (i == 2) {
+        binding.enterSomethingText.setText("Enter Percentage");
+        } else {
+        binding.enterSomethingText.setText("Nothing Selected");
+        }
+        }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                binding.enterSomethingText.setText("Nothing Selected");
-            }
+        @Override public void onNothingSelected(AdapterView<?> adapterView) {
+        binding.enterSomethingText.setText("Nothing Selected");
+        }
         });
          */
 
@@ -168,7 +166,7 @@ public class AddNewBillFragment extends Fragment {
                     Snackbar.make(view, "Amount can only be numbers and decimal", Snackbar.LENGTH_LONG).show();
                 }
 
-                if(amount != 0 && amount > 0 && !description.isEmpty()) {
+                if (amount != 0 && amount > 0 && !description.isEmpty()) {
                     amountHash = allUsersAdapter.getAmountHash(); //get the hashmap from adapter
                     //iterate though the hashmap and check if total match on adding up
                     for (Map.Entry<Integer, Double> entry : amountHash.entrySet()) {
@@ -180,7 +178,7 @@ public class AddNewBillFragment extends Fragment {
                         Long receiptID = mViewModel.insert(receipt);
                         //now we need to set the split bill details
                         for (Map.Entry<Integer, Double> entry : amountHash.entrySet()) {
-                            SplitBillDetails splitBillDetails = new SplitBillDetails(entry.getValue(), (int) (long)receiptID, entry.getKey(), "assigned");
+                            SplitBillDetails splitBillDetails = new SplitBillDetails(entry.getValue(), (int) (long) receiptID, entry.getKey(), "assigned");
                             mViewModel.insert(splitBillDetails);
                         }
                         Snackbar.make(view, "Bill Successfully added", Snackbar.LENGTH_LONG).show();
@@ -192,13 +190,11 @@ public class AddNewBillFragment extends Fragment {
                         navController.navigateUp();
 
 
-
                     } else if (!addedamount.equals(amount)) {
                         Snackbar.make(view, "Amount do not match", Snackbar.LENGTH_LONG).show();
                         addedamount = 0.0;
                     }
-                }
-                else{
+                } else {
                     Snackbar.make(view, "Please enter valid amount and description", Snackbar.LENGTH_LONG).show();
                 }
 

@@ -11,11 +11,12 @@ import com.example.splitshare.databinding.OwedByAndToRecyclerViewItemBinding;
 
 public class OwedByAndToRecyclerViewAdapter extends ListAdapter<OwesByAndTo, OwedByAndToViewHolder> {
     private OwedByAndToRecyclerViewItemBinding binding;
-    public OwedByAndToRecyclerViewAdapter(){
+
+    public OwedByAndToRecyclerViewAdapter() {
         super(DIFF_CALLBACK);
     }
 
-    public static  final DiffUtil.ItemCallback<OwesByAndTo> DIFF_CALLBACK = new DiffUtil.ItemCallback<OwesByAndTo>() {
+    public static final DiffUtil.ItemCallback<OwesByAndTo> DIFF_CALLBACK = new DiffUtil.ItemCallback<OwesByAndTo>() {
         @Override
         public boolean areItemsTheSame(@NonNull OwesByAndTo oldItem, @NonNull OwesByAndTo newItem) {
             return oldItem.getSplitID().equals(newItem.getSplitID());

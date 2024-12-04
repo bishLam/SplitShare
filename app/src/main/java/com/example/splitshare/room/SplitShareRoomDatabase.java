@@ -88,10 +88,10 @@ public abstract class SplitShareRoomDatabase extends RoomDatabase {
 
             //create group and insert two users
             GroupDAO groupDAO = INSTANCE.groupDAO();
-            Group group1 = new Group("Homies", "Groceries and bills", 0, new Date(2000 - 1 - 1), "Active");
+            Group group1 = new Group("Homies", "Groceries and bills");
             groupDAO.insert(group1);
             group1 = groupDAO.findGroupByGroupName("Homies");
-            Group group2 = new Group("Sports Group", "Sports accessories and events", 0, new Date(2000 - 1 - 1), "Active");
+            Group group2 = new Group("Sports Group", "Sports accessories and events");
             groupDAO.insert(group2);
             group2 = groupDAO.findGroupByGroupName("Sports Group");
 
@@ -101,11 +101,11 @@ public abstract class SplitShareRoomDatabase extends RoomDatabase {
 
             //UserGroup class and DAO's
             UserGroupDAO userGroupDAO = INSTANCE.userGroupDAO();
-            UserGroup userGroup1 = new UserGroup(user1.getUserID(), group1.getGroupID(), 0.0, 0.0);
+            UserGroup userGroup1 = new UserGroup(user1.getUserID(), group1.getGroupID());
             userGroupDAO.insert(userGroup1);
-            UserGroup userGroup2 = new UserGroup(user2.getUserID(), group1.getGroupID(), 0.0, 0.0);
+            UserGroup userGroup2 = new UserGroup(user2.getUserID(), group1.getGroupID());
             userGroupDAO.insert(userGroup2);
-            UserGroup userGroup3 = new UserGroup(user3.getUserID(), group2.getGroupID(), 0.0, 0.0);
+            UserGroup userGroup3 = new UserGroup(user3.getUserID(), group2.getGroupID());
             userGroupDAO.insert(userGroup3);
 
             userGroupDAO.getGroupsByUserID(user1.getUserID());

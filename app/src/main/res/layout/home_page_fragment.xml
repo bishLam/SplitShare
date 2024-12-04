@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/homePageFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homePageFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingBottom="80dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,6 +14,20 @@
         android:background="#FFFFFF"
         tools:context=".homepage.HomePageFragment">
 
+
+        <TextView
+            android:id="@+id/noActivitiesText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="You do not have any receipts on your group. \n Come back later to see the recent receipts"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/recentReceiptsRecyclerView" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
@@ -72,7 +87,6 @@
             android:id="@+id/welcomeText2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:text="Most recent receipts"
             android:textSize="18sp"
@@ -87,30 +101,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:text="You have 12 new activities to look at"
+            android:text="Your home for all of your bills"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            app:backgroundTint="#FFFFFF"
-            app:elevation="4dp"
-            app:itemIconSize="30dp"
-            app:itemPaddingBottom="12dp"
-            app:itemPaddingTop="15dp"
-            app:itemTextAppearanceActiveBoldEnabled="true"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu" />
 
         <View
             android:id="@+id/divider"
@@ -123,6 +119,15 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recentReceiptsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/welcomeText2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

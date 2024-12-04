@@ -20,6 +20,8 @@ import com.example.splitshare.login.user.LoggedInUser;
 import com.example.splitshare.login.user.User;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.concurrent.ExecutionException;
+
 public class EditProfileFragment extends Fragment {
 
     private EditProfileViewModel mViewModel;
@@ -36,15 +38,6 @@ public class EditProfileFragment extends Fragment {
         binding = EditProfileFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        mViewModel = new ViewModelProvider(this).get(EditProfileViewModel.class);
-//        // TODO: Use the ViewModel
-//    }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -83,9 +76,14 @@ public class EditProfileFragment extends Fragment {
                     if (loggedinUser.getFirstName().equals(firstName) && loggedinUser.getLastName().equals(lastName) && loggedinUser.getEmail().equals(email) && loggedinUser.getPassword().equals(password) && loggedinUser.getPhoneNumber().equals(phoneNumber)) {
                         Snackbar.make(view, "No changes were made", Snackbar.LENGTH_LONG).show();
                     } else {
-                        User user = new User(firstName, lastName, email, password, phoneNumber);
                         mViewModel.updateUserByUID(loggedinUser.getUserID(), firstName, lastName, email, password, phoneNumber);
-                        LoggedInUser.getInstance().setUser(user);
+                        try {
+                            LoggedInUser.getInstance().setUser(mViewModel.getUserByEmail(email));
+                        } catch (ExecutionException e) {
+                            Snackbar.make(view, "Something went wrong", Snackbar.LENGTH_SHORT).show();
+                        } catch (InterruptedException e) {
+                            Snackbar.make(view, "Something went wrong", Snackbar.LENGTH_SHORT).show();
+                        }
                         NavController navController = Navigation.findNavController(view);
                         Snackbar.make(view, "Profile updated successfully", Snackbar.LENGTH_SHORT).show();
                         navController.navigateUp();

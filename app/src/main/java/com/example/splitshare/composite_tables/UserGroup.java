@@ -46,21 +46,21 @@ public class UserGroup {
     @ColumnInfo(name = "GROUP_ID")
     private Integer groupID;
 
-    @ColumnInfo(name = "TOTAL_SPENDING")
-    private Double totalSpending;
-
-    @ColumnInfo(name = "TOTAL_OWED")
-    private Double totalOwed;
+//    @ColumnInfo(name = "TOTAL_SPENDING")
+//    private Double totalSpending;
+//
+//    @ColumnInfo(name = "TOTAL_OWED")
+//    private Double totalOwed;
 
     @Ignore
     public UserGroup() {
     }
 
-    public UserGroup(Integer userID, Integer groupID, Double totalSpending, Double totalOwed) {
+    public UserGroup(Integer userID, Integer groupID) {
         this.userID = userID;
         this.groupID = groupID;
-        this.totalSpending = totalSpending;
-        this.totalOwed = totalOwed;
+//        this.totalSpending = totalSpending;
+//        this.totalOwed = totalOwed;
     }
 
     public Integer getUserID() {
@@ -79,19 +79,19 @@ public class UserGroup {
         this.groupID = groupID;
     }
 
-    public Double getTotalSpending() {
-        return totalSpending;
-    }
-
-    public void setTotalSpending(Double totalSpending) {
-        this.totalSpending = totalSpending;
-    }
-
-    public Double getTotalOwed() {
-        return totalOwed;
-    }
-
-    public void setTotalOwed(Double totalOwed) {
-        this.totalOwed = totalOwed;
-    }
+//    public Double getTotalSpending() {
+//        return totalSpending;
+//    }
+//
+//    public void setTotalSpending(Double totalSpending) {
+//        this.totalSpending = totalSpending;
+//    }
+//
+//    public Double getTotalOwed() {
+//        return totalOwed;
+//    }
+//
+//    public void setTotalOwed(Double totalOwed) {
+//        this.totalOwed = totalOwed;
+//    }
 }

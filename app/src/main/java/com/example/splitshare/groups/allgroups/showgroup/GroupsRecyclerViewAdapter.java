@@ -30,9 +30,9 @@ public class GroupsRecyclerViewAdapter extends ListAdapter<DetailedGroup, GroupV
         @Override
         public boolean areContentsTheSame(@NonNull DetailedGroup oldItem, @NonNull DetailedGroup newItem) {
             return oldItem.getGroupName().equals(newItem.getGroupName()) &&
-                    oldItem.getCurrentState().equals(newItem.getCurrentState()) &&
+//                    oldItem.getCurrentState().equals(newItem.getCurrentState()) &&
                     oldItem.getGroupDescription().equals(newItem.getGroupDescription()) &&
-                    oldItem.getLastReceipt().equals(newItem.getLastReceipt()) &&
+//                    oldItem.getLastReceipt().equals(newItem.getLastReceipt()) &&
                     oldItem.getTotalMembers().equals(newItem.getTotalMembers());
         }
     };

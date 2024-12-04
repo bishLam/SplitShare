@@ -53,7 +53,7 @@ public class AssignBillRecyclerViewAdapter extends ListAdapter<User, AssignBillV
     }
 
     //this is so that we can store the logic in the fragment from the values and keys
-    public HashMap<Integer, Double> getAmountHash(){
+    public HashMap<Integer, Double> getAmountHash() {
         return amountHash;
     }
 }

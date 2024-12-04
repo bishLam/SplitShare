@@ -15,8 +15,8 @@ public class DetailedGroup implements Serializable {
     private String groupDescription;
     @ColumnInfo(name = "LAST_RECEIPT")
     private Date lastReceipt;
-    @ColumnInfo(name = "CURRENT_STATE")
-    private String currentState;
+    //    @ColumnInfo(name = "CURRENT_STATE")
+//    private String currentState;
     @ColumnInfo(name = "TOTAL_MEMBERS")
     private Integer totalMembers;
 
@@ -24,12 +24,12 @@ public class DetailedGroup implements Serializable {
     public DetailedGroup() {
     }
 
-    public DetailedGroup(Integer groupID, String groupName, String groupDescription, Date lastReceipt, String currentState, Integer totalMembers) {
+    public DetailedGroup(Integer groupID, String groupName, Date lastReceipt, String groupDescription, Integer totalMembers) {
         this.groupID = groupID;
         this.groupName = groupName;
         this.groupDescription = groupDescription;
         this.lastReceipt = lastReceipt;
-        this.currentState = currentState;
+//        this.currentState = currentState;
         this.totalMembers = totalMembers;
     }
 
@@ -64,14 +64,14 @@ public class DetailedGroup implements Serializable {
     public void setLastReceipt(Date lastReceipt) {
         this.lastReceipt = lastReceipt;
     }
-
-    public String getCurrentState() {
-        return currentState;
-    }
-
-    public void setCurrentState(String currentState) {
-        this.currentState = currentState;
-    }
+//
+//    public String getCurrentState() {
+//        return currentState;
+//    }
+//
+//    public void setCurrentState(String currentState) {
+//        this.currentState = currentState;
+//    }
 
     public Integer getTotalMembers() {
         return totalMembers;

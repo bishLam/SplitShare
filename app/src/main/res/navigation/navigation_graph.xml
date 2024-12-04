@@ -112,6 +112,11 @@
         <action
             android:id="@+id/action_groupInfoFragment_to_owesFragment3"
             app:destination="@id/owesFragment3" />
+        <action
+            android:id="@+id/action_groupInfoFragment_to_groupFragment"
+            app:destination="@id/groupFragment"
+            app:popUpTo="@id/groupFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/addNewMemberFragment"
@@ -139,7 +144,22 @@
         android:id="@+id/owesFragment3"
         android:name="com.example.splitshare.groups.bills.settle.owes.OwesFragment"
         android:label="owes_fragment"
-        tools:layout="@layout/owes_fragment" />
+        tools:layout="@layout/owes_fragment" >
+        <action
+            android:id="@+id/action_owesFragment3_to_settleBillFragment"
+            app:destination="@id/settleBillFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settleBillFragment"
+        android:name="com.example.splitshare.groups.bills.settle.SettleBillFragment"
+        android:label="settle_bill_fragment"
+        tools:layout="@layout/settle_bill_fragment" >
+        <action
+            android:id="@+id/action_settleBillFragment_to_owesFragment3"
+            app:destination="@id/owesFragment3"
+            app:popUpTo="@id/owesFragment3"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 
 </navigation>

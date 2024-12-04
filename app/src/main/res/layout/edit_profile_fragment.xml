@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingBottom="80dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/profileFragment"
@@ -120,8 +121,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Password" />
+                android:hint="Password"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

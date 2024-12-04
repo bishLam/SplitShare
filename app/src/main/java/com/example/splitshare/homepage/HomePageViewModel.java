@@ -22,10 +22,16 @@ public class HomePageViewModel extends AndroidViewModel {
         repository = new SplitShareRepository(application);
     }
 
-    public LiveData<List<Group>> getTotalGroupsByUID(Integer uid){
-        LiveData<List<Group>> groups =  repository.getGroupsByUserID(uid);
+    public LiveData<List<Group>> getTotalGroupsByUID(Integer uid) {
+        LiveData<List<Group>> groups = repository.getGroupsByUserID(uid);
         return groups;
     }
+
+    public List<DetailedReceiptClass> getDetailedReceiptsByUser(Integer userID) {
+        return repository.getDetailedReceiptsByUser(userID);
+    }
+
+    ;
 
 
 }
