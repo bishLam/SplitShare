@@ -15,6 +15,7 @@ import java.util.concurrent.ExecutionException;
 public class AddNewMemberViewModel extends AndroidViewModel {
 
     final private SplitShareRepository repository;
+
     public AddNewMemberViewModel(@NonNull Application application) {
         super(application);
         repository = new SplitShareRepository(application);
@@ -29,7 +30,7 @@ public class AddNewMemberViewModel extends AndroidViewModel {
         return repository.findByUserIDAndGroupID(userID, groupID);
     }
 
-    void insertUserGroup(UserGroup userGroup){
+    void insertUserGroup(UserGroup userGroup) {
         repository.insert(userGroup);
     }
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingBottom="80dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,25 +13,38 @@
         tools:context=".groups.allgroups.groupinfo.GroupInfoFragment">
 
 
+        <TextView
+            android:id="@+id/noReceiptsText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="You do not have any receipts yet."
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/guideline12"
+            app:layout_constraintStart_toStartOf="@+id/guideline13"
+            app:layout_constraintTop_toBottomOf="@+id/recentReceiptsRecyclerView" />
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/newBillFAB"
             android:layout_width="142dp"
             android:layout_height="56dp"
-            android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="52dp"
             android:contentDescription="Extended FAB"
             android:text="New Bill"
+            android:textAlignment="center"
             app:icon="@drawable/add"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline12" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline13" />
 
         <TextView
             android:id="@+id/groupNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-medium"
             android:text="Group Name"
             android:textSize="24sp"
@@ -51,11 +65,11 @@
             android:layout_height="70dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/logo"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintBottom_toBottomOf="@+id/optionsImageGroupInfo"
             app:layout_constraintEnd_toStartOf="@+id/imageView7"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toTopOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/optionsImageGroupInfo"
             app:layout_constraintVertical_bias="0.285" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -68,10 +82,11 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/optionsImageGroupInfo"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/ellipses"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintTop_toTopOf="parent" />
@@ -87,7 +102,7 @@
             android:id="@+id/totalMembersTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Total Members: "
             app:layout_constraintEnd_toEndOf="@+id/groupNameTextView"
             app:layout_constraintStart_toStartOf="@+id/groupNameTextView"
@@ -139,65 +154,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="Recent Activities"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
             app:layout_constraintTop_toBottomOf="@+id/addNewMemberBtn" />
 
-        <TextView
-            android:id="@+id/activity1TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-        <TextView
-            android:id="@+id/activity2TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toBottomOf="@+id/activity1TextView" />
-
-        <TextView
-            android:id="@+id/activity3TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toBottomOf="@+id/activity2TextView" />
-
         <Button
             android:id="@+id/settleNowBtn"
+            style="@android:style/Widget.Material.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginBottom="50dp"
             android:text="Settle Now"
-            app:layout_constraintBottom_toBottomOf="@+id/allBillsButton"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline12"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/allBillsButton"
-            app:layout_constraintTop_toTopOf="@+id/allBillsButton" />
+            app:layout_constraintTop_toTopOf="@+id/allBillsButton"
+            app:layout_constraintVertical_bias="0.611" />
 
         <Button
             android:id="@+id/allBillsButton"
+            style="@android:style/Widget.Material.Light.Button.Toggle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="124dp"
-            android:layout_marginEnd="16dp"
-            android:text="All Bills"
-            app:layout_constraintEnd_toStartOf="@+id/settleNowBtn"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginTop="52dp"
+            android:text="View All"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toStartOf="@+id/guideline12"
+            app:layout_constraintTop_toBottomOf="@+id/recentReceiptsRecyclerView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recentReceiptsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline12"
             app:layout_constraintStart_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toBottomOf="@+id/activity3TextView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -29,7 +29,7 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName,  String email, String password, String phoneNumber) {
+    public User(String firstName, String lastName, String email, String password, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;

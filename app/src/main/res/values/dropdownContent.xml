@@ -2,7 +2,7 @@
 <resources>
     <string-array name="spinnerArray">
         <item>By Amount</item>
-        <item>Equally</item>
-        <item>By Percentage</item>
+<!--        <item>Equally</item>-->
+<!--        <item>By Percentage</item>-->
     </string-array>
 </resources>

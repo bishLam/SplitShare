@@ -1,18 +1,28 @@
 package com.example.splitshare.groups.bills;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.example.splitshare.groups.allgroups.Group;
+import com.example.splitshare.login.user.User;
+
 import java.util.Date;
 
-@Entity (tableName = "RECEIPT" ,
+@Entity(tableName = "RECEIPT",
         indices = {
                 @Index(value = "RECEIPT_ID"),
                 @Index(value = "USER_ID"),
                 @Index(value = "GROUP_ID")
+        },
+        foreignKeys = {
+                @ForeignKey(entity = Group.class, parentColumns = "GROUP_ID", childColumns = "GROUP_ID", onDelete = CASCADE),
+                @ForeignKey(entity = User.class, parentColumns = "USER_ID", childColumns = "USER_ID", onDelete = CASCADE)
         }
 )
 public class Receipt {

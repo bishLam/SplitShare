@@ -68,9 +68,6 @@ public class AddNewMemberFragment extends Fragment {
         }
 
 
-
-
-
         binding.addMemberButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,16 +76,14 @@ public class AddNewMemberFragment extends Fragment {
                     String email = binding.memberEmailTIL.getEditText().getText().toString().trim();
                     user = mViewModel.findUserByEmail(email);
 
-                    if(email.isEmpty()){
+                    if (email.isEmpty()) {
                         Snackbar.make(view, "Cannot be empty", Snackbar.LENGTH_LONG).show();
-                    }
-
-                    else if (user != null) {
+                    } else if (user != null) {
 
                         if (mViewModel.findByUserAndGroupIDs(user.getUserID(), group.getGroupID()) != null) {
                             Snackbar.make(view, "User already exists", Snackbar.LENGTH_LONG).show();
                         } else {
-                            UserGroup userGroup = new UserGroup(user.getUserID(), group.getGroupID(), 0.0, 0.0);
+                            UserGroup userGroup = new UserGroup(user.getUserID(), group.getGroupID());
                             mViewModel.insertUserGroup(userGroup);
                             Snackbar.make(view, "User successfully added", Snackbar.LENGTH_LONG).show();
                             NavController navController = Navigation.findNavController(view);
