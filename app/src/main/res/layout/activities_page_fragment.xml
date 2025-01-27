@@ -16,13 +16,9 @@
         android:text="Activities"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline16"
         app:layout_constraintTop_toBottomOf="@+id/imageView12" />
-
-
-
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -71,7 +67,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline17"
         app:layout_constraintHorizontal_bias="0.0"
@@ -90,15 +86,15 @@
             android:id="@+id/settledChip"
             style="@style/Widget.Material3.Chip.Filter"
             android:layout_width="wrap_content"
-            android:text="Settled"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Settled" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/activeChip"
             style="@style/Widget.Material3.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Active"/>
+            android:text="Active" />
     </com.google.android.material.chip.ChipGroup>
 
     <TextView

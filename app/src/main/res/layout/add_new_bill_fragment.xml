@@ -15,12 +15,31 @@
         tools:context=".groups.bills.addreceipt.AddNewBillFragment">
 
 
+        <ImageView
+            android:id="@+id/refreshImageView"
+            android:layout_width="52dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/refresh"
+            app:layout_constraintBottom_toBottomOf="@+id/enterSomethingText"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintTop_toTopOf="@+id/enterSomethingText" />
+
+        <ImageView
+            android:id="@+id/dateIconImageView"
+            android:layout_width="32dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/date_icon"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Description"
+            android:text="Description(required)"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/guideline14"
             app:layout_constraintTop_toBottomOf="@+id/billAmountEditText" />
@@ -29,11 +48,21 @@
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Divide bill by"
+            android:layout_marginTop="8dp"
+            android:text="Date(optional)"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/guideline14"
             app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Select People(optional)"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/dateIconImageView" />
 
         <EditText
             android:id="@+id/billAmountEditText"
@@ -52,7 +81,7 @@
             style="@android:style/Widget.Holo.TextView.SpinnerItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-medium"
             android:text="Adding a bill"
             android:textSize="16sp"
@@ -65,7 +94,7 @@
             android:id="@+id/imageView9"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/ellipses"
             app:layout_constraintEnd_toStartOf="@+id/guideline15"
             app:layout_constraintTop_toTopOf="parent" />
@@ -112,21 +141,11 @@
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Bill Amount"
+            android:layout_marginTop="8dp"
+            android:text="Bill Amount(required)"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/guideline14"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline15"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline14"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
         <EditText
             android:id="@+id/descriptionEditText"
@@ -144,11 +163,12 @@
             android:id="@+id/enterSomethingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="Enter Amount"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/guideline14"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/selectPeopleRecyclerView" />
 
         <Button
             android:id="@+id/addBillButton"
@@ -163,13 +183,64 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/assignBillRecyclerView"
-            android:layout_width="363dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline15"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline14"
             app:layout_constraintTop_toBottomOf="@+id/enterSomethingText" />
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Split Equally" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Amount" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Percentage" />
+
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <TextView
+            android:id="@+id/selectedDateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Select a date"
+            android:textAlignment="viewStart"
+            app:layout_constraintBottom_toBottomOf="@+id/dateIconImageView"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintStart_toEndOf="@+id/dateIconImageView"
+            app:layout_constraintTop_toTopOf="@+id/dateIconImageView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectPeopleRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline14"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,6 +56,7 @@ public class ActivitiesPageFragment extends Fragment {
         //working on this. currently i am getting activities as null so it is causing the issue
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setReverseLayout(true);
+
         binding.activitiesRecyclerView.setLayoutManager(layoutManager);
         binding.activitiesRecyclerView.setHasFixedSize(false);
 
@@ -63,11 +64,11 @@ public class ActivitiesPageFragment extends Fragment {
         ActivityViewAdapter adapter = new ActivityViewAdapter();
         binding.activitiesRecyclerView.setAdapter(adapter);
 
-
         final Observer<List<Activity>> activityObserver = new Observer<List<Activity>>() {
             @Override
             public void onChanged(List<Activity> activities) {
                 adapter.submitList(activities);
+                binding.activitiesRecyclerView.scrollToPosition(adapter.getItemCount()-1);
                 if (activities.size() <= 0) {
                     binding.noActivitiesText.setVisibility(View.VISIBLE);
                     binding.activitiesRecyclerView.setVisibility(View.GONE);
@@ -80,9 +81,6 @@ public class ActivitiesPageFragment extends Fragment {
 
 
         mViewModel.getActivityByUser(LoggedInUser.getInstance().getUser().getUserID()).observe(getViewLifecycleOwner(), activityObserver);
-        if (adapter.getItemCount() - 1 >= 0) {
-            binding.activitiesRecyclerView.scrollToPosition(adapter.getItemCount() - 1);
-        }
 
 
         binding.activeChip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

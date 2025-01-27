@@ -15,8 +15,8 @@ import java.util.concurrent.ExecutionException;
 public class LoginPageViewModel extends AndroidViewModel {
     private User loggedInUser;
     private final SplitShareRepository repository;
-    private String email = "";
-    private String password = "";
+    private String email = "biswanathlamichhane@gmail.com";
+    private String password = "1234";
 
     public LoginPageViewModel(@NonNull Application application) {
         super(application);
