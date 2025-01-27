@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Group.class, User.class, UserGroup.class, Receipt.class, SplitBillDetails.class}, version = 1, exportSchema = false)
+@Database(entities = {Group.class, User.class, UserGroup.class, Receipt.class, SplitBillDetails.class}, version = 2, exportSchema = false)
 @TypeConverters({DateConverters.class})
 public abstract class SplitShareRoomDatabase extends RoomDatabase {
     //DAO's section

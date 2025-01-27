@@ -82,7 +82,7 @@ public class DetailedReceiptClass {
 
     @Override
     public String toString() {
-        return "DetailedReceiptClass{" +
+        return "ConfirmReceiptDetailedReceiptClass{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", receiptDate=" + receiptDate +

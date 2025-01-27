@@ -25,27 +25,6 @@ public class AssignBillViewHolder extends RecyclerView.ViewHolder {
 
     public void update(User user) {
         binding.toMemberText.setText("To " + user.getFirstName() + " " + user.getLastName());
-
-        binding.amountEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                try {
-                    amountMap.put(user.getUserID(), Double.parseDouble(editable.toString()));
-                } catch (NumberFormatException e) {
-                    //the fragment will handle this if invalid input is added
-                }
-            }
-        });
     }
 
 

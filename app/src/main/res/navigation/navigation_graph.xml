@@ -126,7 +126,11 @@
         android:id="@+id/addNewBillFragment"
         android:name="com.example.splitshare.groups.bills.addreceipt.AddNewBillFragment"
         android:label="add_new_bill_fragment"
-        tools:layout="@layout/add_new_bill_fragment" /><action android:id="@+id/action_global_homePageFragment" app:destination="@id/homePageFragment"/><action android:id="@+id/action_global_groupFragment" app:destination="@id/groupFragment"/><action android:id="@+id/action_global_activitiesPageFragment" app:destination="@id/activitiesPageFragment"/>
+        tools:layout="@layout/add_new_bill_fragment" >
+        <action
+            android:id="@+id/action_addNewBillFragment_to_confirmationReceiptFragment"
+            app:destination="@id/confirmationReceiptFragment" />
+    </fragment><action android:id="@+id/action_global_homePageFragment" app:destination="@id/homePageFragment"/><action android:id="@+id/action_global_groupFragment" app:destination="@id/groupFragment"/><action android:id="@+id/action_global_activitiesPageFragment" app:destination="@id/activitiesPageFragment"/>
     <action
         android:id="@+id/action_global_profilePageFragment"
         app:destination="@id/profilePageFragment"
@@ -160,6 +164,11 @@
             app:popUpTo="@id/owesFragment3"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/confirmationReceiptFragment"
+        android:name="com.example.splitshare.groups.bills.addreceipt.confirmreceipt.ConfirmationReceiptFragment"
+        android:label="confirmation_receipt_fragment"
+        tools:layout="@layout/confirmation_receipt_fragment" />
 
 
 </navigation>
