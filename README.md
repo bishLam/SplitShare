@@ -5,7 +5,7 @@ SplitShare is a bill-splitting app that helps users to split bills when they upl
 https://www.youtube.com/embed/Ulisy_Q7_2c
 
 #Demo Images
-<img width="1440" height="3120" alt="image" src="https://github.com/user-attachments/assets/4deca148-820d-4add-a63c-521c6e75f2c9" />
+  <img width="360" height="375" alt="image" src="https://github.com/user-attachments/assets/4deca148-820d-4add-a63c-521c6e75f2c9" />
 
 <img width="1440" height="3120" alt="image" src="https://github.com/user-attachments/assets/a892a387-fd96-4b42-aa2b-4ec99d04f796" />
 
